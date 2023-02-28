@@ -7,4 +7,6 @@
     <string name="favourites">Favourites</string>
     <string name="quotations">Quotations</string>
     <string name="quotation">Quotation</string>
+    <string name="info">QuotationShake by Marta \n mylophue@inf.upv.es\n Developed for DADM 2023</string>
+    <string name="quotation_icon">Quotation icon</string>
 </resources>
