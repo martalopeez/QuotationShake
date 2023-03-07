@@ -5,6 +5,5 @@
         android:title="About"
         android:icon="@drawable/about"
         app:showAsAction="never">
-
     </item>
 </menu>

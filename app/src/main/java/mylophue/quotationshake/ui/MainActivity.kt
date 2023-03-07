@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), MenuProvider {
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        navController.navigate(R.id.aboutDialogFragment)
+        if (menuItem.itemId == R.id.aboutItem) navController.navigate(R.id.aboutDialogFragment)
         return true
     }
 }

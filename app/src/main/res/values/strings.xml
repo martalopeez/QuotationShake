@@ -9,4 +9,9 @@
     <string name="quotation">Quotation</string>
     <string name="info">QuotationShake by Marta \n mylophue@inf.upv.es\n Developed for DADM 2023</string>
     <string name="quotation_icon">Quotation icon</string>
+    <string name="refresh_button">Refresh button</string>
+    <string name="welcome_message">Hello %1s!,\n\nRefresh to get a new quotation\n\n(swipe down or options menu)</string>
+    <string name="refresh">Refresh</string>
+    <string name="fav_button">fav_button</string>
+    <string name="delete_all_quotations">Delete all quotations</string>
 </resources>
