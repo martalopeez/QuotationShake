@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="get_a_new_quotation">Obtén una cita</string>
+    <string name="favourite_quotations">Citas favoritas</string>
+    <string name="about">Acerca de</string>
+    <string name="settings">Configuración</string>
+    <string name="favourites">Favoritos</string>
+    <string name="quotations">Citas</string>
+    <string name="quotation">Cita</string>
+    <string name="info">QuotationShake hecho por Marta \\n mylophue@inf.upv.es\\n Developed for DADM 2023</string>
+    <string name="quotation_icon">Icono cita</string>
+    <string name="refresh_button">Botón refrescar</string>
+    <string name="welcome_message">Hola %1s!,\\n\\nRefresca para obtener una nueva cita\\n\\n(desliza hacia abajo o menú de opciones)</string>
+    <string name="refresh">Refresca</string>
+    <string name="fav_button">btn_fav</string>
+    <string name="delete_all_quotations">Borrar todas las citas</string>
+    <string name="internet_error">No hay conexión a internet</string>
+</resources>

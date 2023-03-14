@@ -12,9 +12,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationBarView
+import dagger.hilt.android.AndroidEntryPoint
 import mylophue.quotationshake.R
 import mylophue.quotationshake.databinding.ActivityMainBinding
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), MenuProvider {
     lateinit var binding: ActivityMainBinding
     lateinit var navController: NavController
@@ -39,7 +41,10 @@ class MainActivity : AppCompatActivity(), MenuProvider {
     }
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-        if (menuItem.itemId == R.id.aboutItem) navController.navigate(R.id.aboutDialogFragment)
-        return true
+        if (menuItem.itemId == R.id.aboutItem) {
+            navController.navigate(R.id.aboutDialogFragment)
+            return true
+        }
+        return false
     }
 }

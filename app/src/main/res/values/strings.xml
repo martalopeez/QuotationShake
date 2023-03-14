@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QuotationShake</string>
+    <string name="app_name" translatable="false">QuotationShake</string>
     <string name="get_a_new_quotation">Get a new quotation</string>
     <string name="favourite_quotations">Favourite quotations</string>
     <string name="about">About</string>
@@ -14,4 +14,8 @@
     <string name="refresh">Refresh</string>
     <string name="fav_button">fav_button</string>
     <string name="delete_all_quotations">Delete all quotations</string>
+    <string name="internet_error">You do not have Internet connection</string>
+    <string name="username">Username</string>
+    <string name="language">Language</string>
+    <string name="enter_name">Enter your name</string>
 </resources>

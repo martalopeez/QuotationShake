@@ -1,5 +1,6 @@
 package mylophue.quotationshake.ui.favourites
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -14,8 +15,11 @@ import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import mylophue.quotationshake.R
 import mylophue.quotationshake.databinding.FragmentFavouritesBinding
+
+@AndroidEntryPoint
 class FavouritesFragment: Fragment(R.layout.fragment_favourites),
     DeleteAllDialogFragment.DeleteInterface, MenuProvider {
     private var _binding: FragmentFavouritesBinding? = null
@@ -52,22 +56,32 @@ class FavouritesFragment: Fragment(R.layout.fragment_favourites),
         val adapter = QuotationListAdapter(object: QuotationListAdapter.ItemClicked {
             override fun onClick(author: String) {
                 if (author == "Anonymous") {
-                    Snackbar.make(view, "No es posible mostrar información si el autor es anónimo.", Snackbar.LENGTH_LONG).show()
-                } else Intent(Intent.ACTION_VIEW, Uri.parse("https://en.wikipedia.org/wiki/Special:Search?search=" + author))
-                //startActivity(Intent.parseIntent())
+                    Snackbar.make(view, "No es posible mostrar información si el autor es anónimo.", Snackbar.LENGTH_SHORT).show()
+                } else
+                    try {
+                        startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse("https://en.wikipedia.org/wiki/Special:Search?search=" + author)
+                            )
+                        )
+                    } catch (e: ActivityNotFoundException) {Snackbar.make(view, "No se ha podido iniciar la actividad.", Snackbar.LENGTH_SHORT).show()}
             }
         })
+        binding.recyclerView.adapter = adapter
         viewModel.favQuotations.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
 
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-        requireActivity().invalidateMenu()
-
+        viewModel.isDeleteAllVisible.observe(viewLifecycleOwner) {
+            requireActivity().invalidateMenu()
+        }
         touchHelper.attachToRecyclerView(binding.recyclerView)
     }
 
     override fun onPrepareMenu(menu: Menu) {
+        super.onPrepareMenu(menu)
         menu.findItem(R.id.deleteItem).isVisible = viewModel.isDeleteAllVisible.value ?: false;
     }
 

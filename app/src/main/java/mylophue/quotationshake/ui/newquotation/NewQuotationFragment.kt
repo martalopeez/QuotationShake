@@ -9,9 +9,12 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import mylophue.quotationshake.R
 import mylophue.quotationshake.databinding.FragmentNewQuotationBinding
 
+@AndroidEntryPoint
 class NewQuotationFragment: Fragment(R.layout.fragment_new_quotation), MenuProvider {
     private var _binding: FragmentNewQuotationBinding? = null
     private val binding get() = _binding!!
@@ -56,6 +59,13 @@ class NewQuotationFragment: Fragment(R.layout.fragment_new_quotation), MenuProvi
         }
 
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        viewModel.existsError.observe(viewLifecycleOwner) {
+            if (it != null) {
+                Snackbar.make(view, "Error", Snackbar.LENGTH_LONG).show()
+                viewModel.resetError()
+            }
+        }
     }
 
     override fun onDestroyView() {

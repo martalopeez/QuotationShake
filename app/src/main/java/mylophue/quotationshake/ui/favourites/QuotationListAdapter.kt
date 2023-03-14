@@ -9,15 +9,12 @@ import mylophue.quotationshake.databinding.QuotationItemBinding
 import mylophue.quotationshake.ui.model.Quotation
 
 class QuotationListAdapter(private val itemClicked: ItemClicked): ListAdapter<Quotation, QuotationListAdapter.ViewHolder>(QuotationDiff) {
-    class ViewHolder(binding: QuotationItemBinding, itemClicked: ItemClicked): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: QuotationItemBinding, itemClicked: ItemClicked): RecyclerView.ViewHolder(binding.root) {
         init {
             binding.root.setOnClickListener {
                 itemClicked.onClick(binding.tvFavAuthor.text.toString())
             }
         }
-
-        private var _binding: QuotationItemBinding? = null
-        private val binding get() = _binding!!
         fun bind(quotation: Quotation) {
             binding.tvFavQuotation.text = quotation.quotation;
             binding.tvFavAuthor.text = quotation.author;
@@ -42,6 +39,6 @@ class QuotationListAdapter(private val itemClicked: ItemClicked): ListAdapter<Qu
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position)) //dibuja cada lista
     }
 }
