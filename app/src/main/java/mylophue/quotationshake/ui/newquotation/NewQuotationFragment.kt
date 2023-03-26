@@ -18,12 +18,9 @@ import mylophue.quotationshake.databinding.FragmentNewQuotationBinding
 class NewQuotationFragment: Fragment(R.layout.fragment_new_quotation), MenuProvider {
     private var _binding: FragmentNewQuotationBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: NewQuotationViewModel by viewModels()
 
-    private fun getNewQuotation() {
-        viewModel.getNewQuotation()
-    }
+    private fun getNewQuotation() { viewModel.getNewQuotation() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,37 +29,27 @@ class NewQuotationFragment: Fragment(R.layout.fragment_new_quotation), MenuProvi
         viewModel.userName.observe(viewLifecycleOwner) {
             binding.tvWelcome.text = getString(R.string.welcome_message, it)
         }
-
         viewModel.quotation.observe(viewLifecycleOwner) {
             binding.tvQuotation.text = it?.quotation
             binding.tvAuthor.text = it?.author ?: "Anonymous"
         }
-
         viewModel.isRefreshing.observe(viewLifecycleOwner) {
             binding.swipeToRefresh.isRefreshing = it
         }
-
         viewModel.isGreetingsVisible.observe(viewLifecycleOwner) {
             binding.tvWelcome.visibility = if (it) View.VISIBLE else View.INVISIBLE
         }
-
         viewModel.favIsVisible.observe(viewLifecycleOwner) {
             binding.btnFav.visibility = if (it) View.VISIBLE else View.INVISIBLE
         }
-
-        binding.swipeToRefresh.setOnRefreshListener {
-            getNewQuotation()
-        }
-
-        binding.btnFav.setOnClickListener {
-            viewModel.addToFavourites()
-        }
+        binding.swipeToRefresh.setOnRefreshListener { getNewQuotation() }
+        binding.btnFav.setOnClickListener { viewModel.addToFavourites() }
 
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
         viewModel.existsError.observe(viewLifecycleOwner) {
             if (it != null) {
-                Snackbar.make(view, "Error", Snackbar.LENGTH_LONG).show()
+                Snackbar.make(view, getString(R.string.error_cita), Snackbar.LENGTH_LONG).show()
                 viewModel.resetError()
             }
         }

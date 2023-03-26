@@ -21,7 +21,6 @@ class NewQuotationDataSourceImpl @Inject constructor(retrofit: Retrofit): NewQuo
                 ResponseBody.create(MediaType.parse("text/plain"), e.toString())
             )
         }
-
     }
 
     interface NewQuotationRetrofit {

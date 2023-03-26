@@ -15,4 +15,7 @@
     <string name="fav_button">btn_fav</string>
     <string name="delete_all_quotations">Borrar todas las citas</string>
     <string name="internet_error">No hay conexión a internet</string>
+    <string name="username">Nombre de usuario</string>
+    <string name="language">Idioma</string>
+    <string name="enter_name">Introduce tu nombre</string>
 </resources>

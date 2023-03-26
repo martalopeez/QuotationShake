@@ -39,6 +39,6 @@ class QuotationListAdapter(private val itemClicked: ItemClicked): ListAdapter<Qu
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position)) //dibuja cada lista
+        holder.bind(getItem(position)) //dibuja cada vista
     }
 }

@@ -18,4 +18,5 @@
     <string name="username">Username</string>
     <string name="language">Language</string>
     <string name="enter_name">Enter your name</string>
+    <string name="error_cita">No se ha podido cargar la cita</string>
 </resources>

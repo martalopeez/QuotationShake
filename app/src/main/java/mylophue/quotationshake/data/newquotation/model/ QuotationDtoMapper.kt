@@ -1,4 +1,5 @@
-import mylophue.quotationshake.data.newquotation.model.QuotationDto
+package mylophue.quotationshake.data.newquotation.model
+
 import mylophue.quotationshake.ui.model.Quotation
 import retrofit2.Response
 import java.io.IOException
